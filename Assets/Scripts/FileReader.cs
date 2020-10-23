@@ -11,14 +11,15 @@ public class FileReader : MonoBehaviour
     string songname, author, difficulty;
     int bpm, compas1, compas2;
     string[] notesPerComp;
-    List<List<int>> notes = new List<List<int>>();
+    public Queue notes = new Queue();
+    public int a;
 
     #endregion
     #region ---- PUBLIC ----
 
     #endregion
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (File.Exists(song)) {
             string[] text = File.ReadAllLines(song);
@@ -28,13 +29,9 @@ public class FileReader : MonoBehaviour
             compas1 = Int32.Parse(text[3]);
             compas2 = Int32.Parse(text[4]);
             difficulty = text[5];
-            for (int i = 0; i < Int32.Parse(text[6]); i++) {
-                notesPerComp = text[i + 7].Split(new string[] { " " }, StringSplitOptions.None);
-                List<int> subnotes = new List<int>();
-                foreach (string note in notesPerComp) {
-                    subnotes.Add(Int32.Parse(note));
-                }
-                notes.Add(subnotes);
+            notesPerComp = text[6].Split(new string[] { " " }, StringSplitOptions.None);
+            foreach (string note in notesPerComp) {
+                notes.Enqueue(Int32.Parse(note));
             }
             print(songname);
         }

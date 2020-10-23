@@ -11,7 +11,10 @@ public class MockupSpawner : MonoBehaviour
     MockupButtonMovement buttonPrefab;
 
     RhythmManager rhythmManager;
+    FileReader fileReader;
     float bpm, crotchet, lastBeat;
+    int cont;
+    Queue notes;
     #endregion
     #region --- PROTECTED ---
 
@@ -30,6 +33,9 @@ public class MockupSpawner : MonoBehaviour
         rhythmManager = GameObject.FindGameObjectWithTag("RhythmManager").GetComponent<RhythmManager>();
         bpm = rhythmManager.bpm;
         crotchet = 60 / bpm;
+        cont = 0;
+        fileReader = GameObject.FindGameObjectWithTag("FileReader").GetComponent<FileReader>();
+        notes = fileReader.notes;
 
         //InvokeRepeating("SpawnButtons", 0.5f, 2f);
     }
@@ -39,7 +45,11 @@ public class MockupSpawner : MonoBehaviour
     {
         if (rhythmManager.songPosition > lastBeat + crotchet)
         {
-            SpawnButtons();
+            cont++;
+            if (cont == (int) notes.Peek()) {
+                SpawnButtons();
+                notes.Dequeue();
+            }
 
             lastBeat += crotchet;
         }
