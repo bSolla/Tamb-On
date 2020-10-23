@@ -7,7 +7,7 @@ public class InputManager : MonoBehaviour
     #region ---- VARIABLES ----
 
     #region --- PRIVATE ---
-
+    ScoreManager scoreManager;
     #endregion
     #region --- PROTECTED ---
 
@@ -23,7 +23,7 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        scoreManager = gameObject.transform.parent.GetComponentInChildren<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -46,6 +46,7 @@ public class InputManager : MonoBehaviour
             if (button != null && button.clickable) // see if its a button and if its clickable
             {
                 Destroy(button.gameObject);
+                scoreManager.UpdateScore();
             }
         }
     }
