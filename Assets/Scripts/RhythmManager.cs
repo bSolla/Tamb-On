@@ -23,8 +23,8 @@ public class RhythmManager : MonoBehaviour
 
     #region ---- METHODS ----
     #region --- UNITY METHODS ---
-    // Start is called before the first frame update
-    void Start()
+    // initialization of internal values
+    void Awake()
     {
         crotchet = 60 / bpm;
     }
