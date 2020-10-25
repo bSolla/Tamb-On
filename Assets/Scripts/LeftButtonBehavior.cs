@@ -1,17 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
-public class MockupButtonMovement : BaseButtonBehavior
+public class LeftButtonBehavior : BaseButtonBehavior
 {
     #region ---- VARIABLES ----
     #region --- PRIVATE ---
-
     #endregion
 
     #region --- PUBLIC ---
-    public bool clickable = false;
     #endregion
     #endregion
 
@@ -33,7 +30,8 @@ public class MockupButtonMovement : BaseButtonBehavior
     {
         if (other.tag == "Goal")
         {
-            clickable = true;
+            GameManager.instance.inputManager.leftTaikoReady = true;
+            GameManager.instance.inputManager.leftButtonToDestroy = this.gameObject;
         }
     }
 
@@ -41,7 +39,8 @@ public class MockupButtonMovement : BaseButtonBehavior
     {
         if (other.tag == "Goal")
         {
-            clickable = false;
+            GameManager.instance.inputManager.leftTaikoReady = false;
+            GameManager.instance.inputManager.leftButtonToDestroy = null;
 
             Invoke("DestroyButton", 1f);
         }
@@ -49,7 +48,7 @@ public class MockupButtonMovement : BaseButtonBehavior
     #endregion
 
     #region --- CUSTOM METHODS ---
-
+    
     #endregion
 
     #endregion

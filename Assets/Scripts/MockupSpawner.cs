@@ -8,7 +8,7 @@ public class MockupSpawner : MonoBehaviour
 
     #region --- PRIVATE ---
     [SerializeField]
-    MockupButtonMovement buttonPrefab;
+    BaseButtonBehavior buttonPrefab;
 
     RhythmManager rhythmManager;
     float bpm, crotchet, lastBeat;

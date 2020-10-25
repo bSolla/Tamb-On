@@ -8,11 +8,19 @@ public class InputManager : MonoBehaviour
 
     #region --- PRIVATE ---
     ScoreManager scoreManager;
+
+    const KeyCode LEFT_TAIKO = KeyCode.A;
+    const KeyCode RIGHT_TAIKO = KeyCode.L;
     #endregion
     #region --- PROTECTED ---
 
     #endregion
+
     #region --- PUBLIC ---
+    public bool leftTaikoReady = false;
+    public bool rightTaikoReady = false;
+    public GameObject leftButtonToDestroy;
+
     #endregion
 
     #endregion
@@ -29,8 +37,13 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButton(0))
-            ReadMouseClick();
+        //if(Input.GetMouseButton(0))
+        //    ReadMouseClick();
+
+        if (Input.GetKey(LEFT_TAIKO))
+        {
+            CheckLeftTaiko();
+        }
     }
     #endregion
 
@@ -48,6 +61,18 @@ public class InputManager : MonoBehaviour
                 Destroy(button.gameObject);
                 scoreManager.UpdateScore();
             }
+        }
+    }
+
+    void CheckLeftTaiko()
+    {
+        if (leftTaikoReady)
+        {
+            Destroy(leftButtonToDestroy);
+        }
+        else
+        {
+            // penalty
         }
     }
     #endregion

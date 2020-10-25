@@ -1243,6 +1243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63359283d521e4244a46701de71c0470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftTaikoReady: 0
+  rightTaikoReady: 0
+  leftButtonToDestroy: {fileID: 0}
 --- !u!4 &1458853282
 Transform:
   m_ObjectHideFlags: 0
@@ -1636,5 +1639,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2378fd42fb576c54698f8d23b48ca22c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPrefab: {fileID: 5004786017207996039, guid: 6953c66d8589e9e4395a0998b6485bef,
+  buttonPrefab: {fileID: 5223199184018029419, guid: fee536de73eaa0b4c931fcdc57136ba0,
     type: 3}

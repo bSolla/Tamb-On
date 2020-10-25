@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
 
             DontDestroyOnLoad(this.gameObject);
 
+            // TODO: when we add more scenes, change this so it makes sense for all scenes, not just the play scene
             scoreManager = GetComponentInChildren<ScoreManager>();
             rhythmManager = GetComponentInChildren<RhythmManager>();
             inputManager = GetComponentInChildren<InputManager>();
