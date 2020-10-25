@@ -27,7 +27,7 @@ public class MockupSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rhythmManager = GameObject.FindGameObjectWithTag("RhythmManager").GetComponent<RhythmManager>();
+        rhythmManager = GameManager.instance.rhythmManager;
         bpm = rhythmManager.bpm;
         crotchet = 60 / bpm;
 

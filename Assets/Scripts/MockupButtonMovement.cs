@@ -28,7 +28,7 @@ public class MockupButtonMovement : MonoBehaviour
     // Caching of variables and initialization
     void Start()
     {
-        rhythmManager = GameObject.FindGameObjectWithTag("RhythmManager").GetComponent<RhythmManager>();
+        rhythmManager = GameManager.instance.rhythmManager;
         buttonTransform = gameObject.transform;
         originPoint = GameObject.FindGameObjectWithTag("Spawner").transform.position;
         destinationPoint = GameObject.FindGameObjectWithTag("Goal").transform.position;

@@ -23,7 +23,7 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scoreManager = gameObject.transform.parent.GetComponentInChildren<ScoreManager>();
+        scoreManager = GameManager.instance.scoreManager;
     }
 
     // Update is called once per frame
