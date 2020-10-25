@@ -64,7 +64,7 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    void CheckLeftTaiko()
+    public void CheckLeftTaiko()
     {
         if (leftTaikoReady)
         {
