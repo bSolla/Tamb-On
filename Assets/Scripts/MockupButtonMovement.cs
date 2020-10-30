@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class MockupButtonMovement : MonoBehaviour
 {
@@ -32,7 +33,6 @@ public class MockupButtonMovement : MonoBehaviour
         buttonTransform = gameObject.transform;
         originPoint = GameObject.FindGameObjectWithTag("Spawner").transform.position;
         destinationPoint = GameObject.FindGameObjectWithTag("Goal").transform.position;
-
         float timeToReachGoal = rhythmManager.crotchet * 2; // TODO: establish how many beats ahead we want the buttons to spawn
 
         speed = (Vector2.Distance(destinationPoint, originPoint) / timeToReachGoal);
@@ -54,6 +54,7 @@ public class MockupButtonMovement : MonoBehaviour
         if (other.tag == "Goal")
         {
             clickable = true;
+            rhythmManager.Play();
         }
     }
 

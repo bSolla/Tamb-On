@@ -36,7 +36,6 @@ public class MockupSpawner : MonoBehaviour
         cont = 0;
         fileReader = GameObject.FindGameObjectWithTag("FileReader").GetComponent<FileReader>();
         notes = fileReader.notes;
-
         //InvokeRepeating("SpawnButtons", 0.5f, 2f);
     }
 
@@ -56,6 +55,7 @@ public class MockupSpawner : MonoBehaviour
     }
     #endregion
 
+    
     #region --- CUSTOM METHODS ---
     void SpawnButtons()
     {

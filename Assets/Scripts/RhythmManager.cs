@@ -7,7 +7,7 @@ public class RhythmManager : MonoBehaviour
     #region ---- VARIABLES ----
 
     #region --- PRIVATE ---
-
+    bool first;
     #endregion
     #region --- PROTECTED ---
 
@@ -26,6 +26,7 @@ public class RhythmManager : MonoBehaviour
     // initialization of internal values
     void Awake()
     {
+        first = true;
         crotchet = 60 / bpm;
     }
 
@@ -35,7 +36,15 @@ public class RhythmManager : MonoBehaviour
         songPosition = Time.time; // not permanent!! TODO
     }
     #endregion
-
+    public void Play()
+    {
+        if (first)
+        {
+            AudioSource audio = GetComponent<AudioSource>();
+            audio.Play();
+            first = false;
+        }
+    }
     #region --- CUSTOM METHODS ---
 
     #endregion

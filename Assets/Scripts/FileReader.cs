@@ -7,7 +7,8 @@ using System.IO;
 public class FileReader : MonoBehaviour
 {
     #region ---- PRIVATE ----
-    string song = "D:/TFG/taiko/Assets/Resources/Songs/song1.txt";
+
+
     string songname, author, difficulty;
     int bpm, compas1, compas2;
     string[] notesPerComp;
@@ -21,6 +22,7 @@ public class FileReader : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        string song = Application.dataPath + "/Resources/Songs/song1.txt";
         if (File.Exists(song)) {
             string[] text = File.ReadAllLines(song);
             songname = text[0];
