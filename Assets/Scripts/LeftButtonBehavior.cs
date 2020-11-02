@@ -31,7 +31,7 @@ public class LeftButtonBehavior : BaseButtonBehavior
         if (other.tag == "Goal")
         {
             GameManager.instance.inputManager.leftTaikoReady = true;
-            GameManager.instance.inputManager.leftButtonToDestroy = this.gameObject;
+            GameManager.instance.inputManager.leftButtonToDestroy = gameObject;
         }
     }
 

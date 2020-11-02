@@ -59,20 +59,23 @@ public class InputManager : MonoBehaviour
             if (button != null && button.clickable) // see if its a button and if its clickable
             {
                 Destroy(button.gameObject);
-                scoreManager.UpdateScore();
+                scoreManager.IncreaseScore();
             }
         }
     }
 
     public void CheckLeftTaiko()
     {
-        if (leftTaikoReady)
+        if (!leftTaikoReady)
         {
-            Destroy(leftButtonToDestroy);
+            // TODO: add some kinda "offset" to make the penalty more loose on the player
+            //scoreManager.ScorePenalty(); 
         }
         else
         {
-            // penalty
+            Destroy(leftButtonToDestroy);
+            scoreManager.IncreaseScore();
+            leftTaikoReady = false;
         }
     }
     #endregion

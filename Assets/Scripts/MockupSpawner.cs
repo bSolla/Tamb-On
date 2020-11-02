@@ -8,10 +8,18 @@ public class MockupSpawner : MonoBehaviour
 
     #region --- PRIVATE ---
     [SerializeField]
-    BaseButtonBehavior buttonPrefab;
+    BaseButtonBehavior buttonPrefabLeft;
+    [SerializeField]
+    BaseButtonBehavior buttonPrefabRight;
 
     RhythmManager rhythmManager;
-    float bpm, crotchet, lastBeat;
+    float bpm, crotchet, lastBeat = 0;
+
+    // change for the real deal when the file reading is done!! TODO
+    Queue<int> spawnTimesLeft = new Queue<int>(new[] { 1, 3, 6, 7, 10, 12, 14, 15, 17, 20,
+                                                            24, 25, 28, 29, 30, 33, 34, 36, 40});
+    Queue<int> spawnTimesRight = new Queue<int>(new[] { 2, 5, 8, 11, 16, 18, 21, 23, 26, 32,
+                                                            35, 37, 38});
     #endregion
     #region --- PROTECTED ---
 
@@ -30,26 +38,35 @@ public class MockupSpawner : MonoBehaviour
         rhythmManager = GameManager.instance.rhythmManager;
         bpm = rhythmManager.bpm;
         crotchet = 60 / bpm;
-
-        //InvokeRepeating("SpawnButtons", 0.5f, 2f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (rhythmManager.songPosition > lastBeat + crotchet)
-        {
-            SpawnButtons();
+        //if (rhythmManager.songPosition > lastBeat + crotchet)
+        //{
+        //    SpawnButtons();
 
-            lastBeat += crotchet;
+        //    lastBeat += crotchet;
+        //}
+        if (spawnTimesLeft.Count != 0 && rhythmManager.songPosition > crotchet * spawnTimesLeft.Peek())
+        {
+            SpawnLeftButtons();
+
+            spawnTimesLeft.Dequeue();
         }
     }
     #endregion
 
     #region --- CUSTOM METHODS ---
-    void SpawnButtons()
+    void SpawnLeftButtons()
     {
-        Instantiate(buttonPrefab, this.transform, true);
+        Instantiate(buttonPrefabLeft, this.transform, true);
+    }
+
+    void SpawnRightButtons()
+    {
+        Instantiate(buttonPrefabRight, this.transform, true);
     }
     #endregion
     #endregion

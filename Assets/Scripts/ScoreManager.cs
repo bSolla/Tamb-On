@@ -10,6 +10,8 @@ public class ScoreManager : MonoBehaviour
     #region --- PRIVATE ---
     [SerializeField]
     private Text scoreText;
+
+    const int PENALTY = 5;
     #endregion
     #region --- PROTECTED ---
 
@@ -37,9 +39,23 @@ public class ScoreManager : MonoBehaviour
     #endregion
 
     #region --- CUSTOM METHODS ---
-    public void UpdateScore()
+    public void IncreaseScore()
     {
         score++;
+        scoreText.text = score.ToString();
+    }
+
+    public void ScorePenalty()
+    {
+        if (score >= PENALTY)
+        {
+            score -= PENALTY;
+        }
+        else
+        {
+            score = 0;
+        }
+
         scoreText.text = score.ToString();
     }
     #endregion
