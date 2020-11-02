@@ -49,11 +49,21 @@ public class MockupSpawner : MonoBehaviour
 
         //    lastBeat += crotchet;
         //}
+
+        // check if we need to spawn left buttons
         if (spawnTimesLeft.Count != 0 && rhythmManager.songPosition > crotchet * spawnTimesLeft.Peek())
         {
             SpawnLeftButtons();
 
             spawnTimesLeft.Dequeue();
+        }
+
+        // check if we need to spawn right buttons
+        if (spawnTimesRight.Count != 0 && rhythmManager.songPosition > crotchet * spawnTimesRight.Peek())
+        {
+            SpawnRightButtons();
+
+            spawnTimesRight.Dequeue();
         }
     }
     #endregion

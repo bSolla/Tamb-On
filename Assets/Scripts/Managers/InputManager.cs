@@ -17,9 +17,9 @@ public class InputManager : MonoBehaviour
     #endregion
 
     #region --- PUBLIC ---
-    public bool leftTaikoReady = false;
-    public bool rightTaikoReady = false;
-    public GameObject leftButtonToDestroy;
+    public bool taikoReadyL = false;
+    public bool taikoReadyR = false;
+    public GameObject buttonToDestroyL, buttonToDestroyR;
 
     #endregion
 
@@ -40,9 +40,13 @@ public class InputManager : MonoBehaviour
         //if(Input.GetMouseButton(0))
         //    ReadMouseClick();
 
-        if (Input.GetKey(LEFT_TAIKO))
+        if (Input.GetKeyDown(LEFT_TAIKO))
         {
             CheckLeftTaiko();
+        }
+        if (Input.GetKeyDown(RIGHT_TAIKO))
+        {
+            CheckRightTaiko();
         }
     }
     #endregion
@@ -66,16 +70,29 @@ public class InputManager : MonoBehaviour
 
     public void CheckLeftTaiko()
     {
-        if (!leftTaikoReady)
+        if (!taikoReadyL)
         {
-            // TODO: add some kinda "offset" to make the penalty more loose on the player
-            //scoreManager.ScorePenalty(); 
+            scoreManager.ScorePenalty();
         }
         else
         {
-            Destroy(leftButtonToDestroy);
+            Destroy(buttonToDestroyL);
             scoreManager.IncreaseScore();
-            leftTaikoReady = false;
+            taikoReadyL = false;
+        }
+    }
+
+    public void CheckRightTaiko()
+    {
+        if (!taikoReadyR)
+        {
+            scoreManager.ScorePenalty(); 
+        }
+        else
+        {
+            Destroy(buttonToDestroyR);
+            scoreManager.IncreaseScore();
+            taikoReadyR = false;
         }
     }
     #endregion
