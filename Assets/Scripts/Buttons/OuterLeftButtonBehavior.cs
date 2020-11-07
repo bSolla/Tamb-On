@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RightButtonBehavior : BaseButtonBehavior
+public class OuterLeftButtonBehavior : BaseButtonBehavior
 {
     #region ---- VARIABLES ----
     #region --- PRIVATE ---
@@ -30,8 +30,8 @@ public class RightButtonBehavior : BaseButtonBehavior
     {
         if (other.tag == "Goal")
         {
-            GameManager.instance.inputManager.taikoReadyR = true;
-            GameManager.instance.inputManager.buttonToDestroyR = gameObject;
+            GameManager.instance.inputManager.taikoReadyL = true;
+            GameManager.instance.inputManager.buttonToDestroyL = gameObject;
         }
     }
 
@@ -39,8 +39,8 @@ public class RightButtonBehavior : BaseButtonBehavior
     {
         if (other.tag == "Goal")
         {
-            GameManager.instance.inputManager.taikoReadyR = false;
-            GameManager.instance.inputManager.buttonToDestroyR = null;
+            GameManager.instance.inputManager.taikoReadyL = false;
+            GameManager.instance.inputManager.buttonToDestroyL = null;
 
 
             GameManager.instance.scoreManager.ScorePenalty();

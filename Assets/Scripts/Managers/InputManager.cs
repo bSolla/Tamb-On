@@ -9,8 +9,10 @@ public class InputManager : MonoBehaviour
     #region --- PRIVATE ---
     ScoreManager scoreManager;
 
-    const KeyCode LEFT_TAIKO = KeyCode.A;
-    const KeyCode RIGHT_TAIKO = KeyCode.L;
+    const KeyCode INNER_LEFT_TAIKO = KeyCode.F;
+    const KeyCode OUTER_LEFT_TAIKO = KeyCode.Q;
+    const KeyCode INNER_RIGHT_TAIKO = KeyCode.J;
+    const KeyCode OUTER_RIGHT_TAIKO = KeyCode.P;
     #endregion
     #region --- PROTECTED ---
 
@@ -40,11 +42,11 @@ public class InputManager : MonoBehaviour
         //if(Input.GetMouseButton(0))
         //    ReadMouseClick();
 
-        if (Input.GetKeyDown(LEFT_TAIKO))
+        if (Input.GetKeyDown(INNER_LEFT_TAIKO))
         {
             CheckLeftTaiko();
         }
-        if (Input.GetKeyDown(RIGHT_TAIKO))
+        if (Input.GetKeyDown(INNER_RIGHT_TAIKO))
         {
             CheckRightTaiko();
         }

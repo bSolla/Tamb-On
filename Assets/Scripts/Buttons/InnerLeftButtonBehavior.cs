@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LeftButtonBehavior : BaseButtonBehavior
+public class InnerLeftButtonBehavior : BaseButtonBehavior
 {
     #region ---- VARIABLES ----
     #region --- PRIVATE ---
