@@ -30,8 +30,8 @@ public class OuterLeftButtonBehavior : BaseButtonBehavior
     {
         if (other.tag == "Goal")
         {
-            GameManager.instance.inputManager.taikoReadyL = true;
-            GameManager.instance.inputManager.buttonToDestroyL = gameObject;
+            GameManager.instance.inputManager.outerTaikoReadyL = true;
+            GameManager.instance.inputManager.buttonToDestroyOL = gameObject;
         }
     }
 
@@ -39,8 +39,8 @@ public class OuterLeftButtonBehavior : BaseButtonBehavior
     {
         if (other.tag == "Goal")
         {
-            GameManager.instance.inputManager.taikoReadyL = false;
-            GameManager.instance.inputManager.buttonToDestroyL = null;
+            GameManager.instance.inputManager.outerTaikoReadyL = false;
+            GameManager.instance.inputManager.buttonToDestroyOL = null;
 
 
             GameManager.instance.scoreManager.ScorePenalty();

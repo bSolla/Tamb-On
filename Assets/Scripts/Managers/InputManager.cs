@@ -19,9 +19,10 @@ public class InputManager : MonoBehaviour
     #endregion
 
     #region --- PUBLIC ---
-    public bool taikoReadyL = false;
-    public bool taikoReadyR = false;
-    public GameObject buttonToDestroyL, buttonToDestroyR;
+    public bool innerTaikoReadyL = false, innerTaikoReadyR = false;
+    public bool outerTaikoReadyL = false, outerTaikoReadyR = false;
+    public GameObject buttonToDestroyIL, buttonToDestroyIR;
+    public GameObject buttonToDestroyOL, buttonToDestroyOR;
 
     #endregion
 
@@ -44,11 +45,19 @@ public class InputManager : MonoBehaviour
 
         if (Input.GetKeyDown(INNER_LEFT_TAIKO))
         {
-            CheckLeftTaiko();
+            CheckInnerLeftTaiko();
         }
         if (Input.GetKeyDown(INNER_RIGHT_TAIKO))
         {
-            CheckRightTaiko();
+            CheckInnerRightTaiko();
+        }
+        if (Input.GetKeyDown(OUTER_LEFT_TAIKO))
+        {
+            CheckOuterLeftTaiko();
+        }
+        if (Input.GetKeyDown(OUTER_RIGHT_TAIKO))
+        {
+            CheckOuterRightTaiko();
         }
     }
     #endregion
@@ -70,31 +79,59 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    public void CheckLeftTaiko()
+    public void CheckInnerLeftTaiko()
     {
-        if (!taikoReadyL)
+        if (!innerTaikoReadyL)
         {
             scoreManager.ScorePenalty();
         }
         else
         {
-            Destroy(buttonToDestroyL);
+            Destroy(buttonToDestroyIL);
             scoreManager.IncreaseScore();
-            taikoReadyL = false;
+            innerTaikoReadyL = false;
         }
     }
 
-    public void CheckRightTaiko()
+    public void CheckInnerRightTaiko()
     {
-        if (!taikoReadyR)
+        if (!innerTaikoReadyR)
         {
             scoreManager.ScorePenalty(); 
         }
         else
         {
-            Destroy(buttonToDestroyR);
+            Destroy(buttonToDestroyIR);
             scoreManager.IncreaseScore();
-            taikoReadyR = false;
+            innerTaikoReadyR = false;
+        }
+    }
+
+    public void CheckOuterLeftTaiko()
+    {
+        if (!outerTaikoReadyL)
+        {
+            scoreManager.ScorePenalty();
+        }
+        else
+        {
+            Destroy(buttonToDestroyOL);
+            scoreManager.IncreaseScore();
+            outerTaikoReadyL = false;
+        }
+    }
+
+    public void CheckOuterRightTaiko()
+    {
+        if (!outerTaikoReadyR)
+        {
+            scoreManager.ScorePenalty();
+        }
+        else
+        {
+            Destroy(buttonToDestroyOR);
+            scoreManager.IncreaseScore();
+            outerTaikoReadyR = false;
         }
     }
     #endregion

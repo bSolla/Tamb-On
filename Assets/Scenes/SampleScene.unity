@@ -236,7 +236,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: L
+  m_Text: J
 --- !u!222 &83600614
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1254,10 +1254,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63359283d521e4244a46701de71c0470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taikoReadyL: 0
-  taikoReadyR: 0
-  buttonToDestroyL: {fileID: 0}
-  buttonToDestroyR: {fileID: 0}
+  innerTaikoReadyL: 0
+  innerTaikoReadyR: 0
+  outerTaikoReadyL: 0
+  outerTaikoReadyR: 0
+  buttonToDestroyIL: {fileID: 0}
+  buttonToDestroyIR: {fileID: 0}
+  buttonToDestroyOL: {fileID: 0}
+  buttonToDestroyOR: {fileID: 0}
 --- !u!4 &1458853282
 Transform:
   m_ObjectHideFlags: 0
@@ -1341,7 +1345,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: A
+  m_Text: F
 --- !u!222 &1613864338
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -30,8 +30,8 @@ public class InnerRightButtonBehavior : BaseButtonBehavior
     {
         if (other.tag == "Goal")
         {
-            GameManager.instance.inputManager.taikoReadyR = true;
-            GameManager.instance.inputManager.buttonToDestroyR = gameObject;
+            GameManager.instance.inputManager.innerTaikoReadyR = true;
+            GameManager.instance.inputManager.buttonToDestroyIR = gameObject;
         }
     }
 
@@ -39,8 +39,8 @@ public class InnerRightButtonBehavior : BaseButtonBehavior
     {
         if (other.tag == "Goal")
         {
-            GameManager.instance.inputManager.taikoReadyR = false;
-            GameManager.instance.inputManager.buttonToDestroyR = null;
+            GameManager.instance.inputManager.innerTaikoReadyR = false;
+            GameManager.instance.inputManager.buttonToDestroyIR = null;
 
 
             GameManager.instance.scoreManager.ScorePenalty();
