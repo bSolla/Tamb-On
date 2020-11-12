@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LeftButtonBehavior : BaseButtonBehavior
+public class InnerRightButtonBehavior : BaseButtonBehavior
 {
     #region ---- VARIABLES ----
     #region --- PRIVATE ---
@@ -30,8 +30,8 @@ public class LeftButtonBehavior : BaseButtonBehavior
     {
         if (other.tag == "Goal")
         {
-            GameManager.instance.inputManager.leftTaikoReady = true;
-            GameManager.instance.inputManager.leftButtonToDestroy = this.gameObject;
+            GameManager.instance.inputManager.innerTaikoReadyR = true;
+            GameManager.instance.inputManager.buttonToDestroyIR = gameObject;
         }
     }
 
@@ -39,8 +39,11 @@ public class LeftButtonBehavior : BaseButtonBehavior
     {
         if (other.tag == "Goal")
         {
-            GameManager.instance.inputManager.leftTaikoReady = false;
-            GameManager.instance.inputManager.leftButtonToDestroy = null;
+            GameManager.instance.inputManager.innerTaikoReadyR = false;
+            GameManager.instance.inputManager.buttonToDestroyIR = null;
+
+
+            GameManager.instance.scoreManager.ScorePenalty();
 
             Invoke("DestroyButton", 1f);
         }
@@ -48,7 +51,7 @@ public class LeftButtonBehavior : BaseButtonBehavior
     #endregion
 
     #region --- CUSTOM METHODS ---
-    
+
     #endregion
 
     #endregion
