@@ -42,7 +42,7 @@ public class MockupSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (rhythmManager.songPosition > lastBeat + crotchet)
+        /*if (rhythmManager.songPosition > lastBeat + crotchet)
         {
             cont++;
             if (cont == (int) notes.Peek()) {
@@ -51,7 +51,7 @@ public class MockupSpawner : MonoBehaviour
             }
 
             lastBeat += crotchet;
-        }
+        }*/
     }
     #endregion
 
