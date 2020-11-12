@@ -56,11 +56,11 @@ public class RhythmManager : MonoBehaviour
                 {
                     if (i.data1 == 0x30)
                     {
-                        GameObject.Find("Spawner").SendMessage("SpawnButtons");
+                        GameObject.Find("Spawner").SendMessage("SpawnLeftButtons");
                     }
                     else if (i.data1 == 0x3C)
                     {
-                        GameObject.Find("Spawner").SendMessage("SpawnButtons");
+                        GameObject.Find("Spawner").SendMessage("SpawnRightButtons");
                     }
                 }
             }
