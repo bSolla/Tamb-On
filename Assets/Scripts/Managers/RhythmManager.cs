@@ -4,6 +4,7 @@ using System.Timers;
 using UnityEngine;
 using SmfLite;
 using System;
+using System.IO;
 
 public class RhythmManager : MonoBehaviour
 {
@@ -33,8 +34,9 @@ public class RhythmManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        string fileMid = Application.dataPath + "/Resources/"+ StaticClass.CrossSceneInfo + ".mid.bytes";
         
-        song = MidiFileLoader.Load(midiFile.bytes);
+        song = MidiFileLoader.Load(File.ReadAllBytes(fileMid));
         sequencer = new MidiTrackSequencer(song.tracks[0], song.division, bpm);
         SendMidiMessages(sequencer.Start());
         StartCoroutine(playSong());
@@ -43,7 +45,10 @@ public class RhythmManager : MonoBehaviour
     private IEnumerator playSong()
     {
         yield return new WaitForSeconds(0.75f);
-        GetComponent<AudioSource>().Play();
+        string filemp3 = StaticClass.CrossSceneInfo;
+        AudioSource audio = gameObject.GetComponent<AudioSource>();
+        AudioClip clip1 = (AudioClip)Resources.Load(filemp3);
+        audio.PlayOneShot(clip1); ;
     }
 
     private void SendMidiMessages(List<MidiEvent> m)

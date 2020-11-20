@@ -6,6 +6,12 @@ using UnityEngine.SceneManagement;
 public class MenuScript : MonoBehaviour
 {
     // Start is called before the first frame update
+    int numCancion;
+    public void elegirCancion1()
+    {
+        numCancion = 1;
+    }
+
     void Start()
     {
         
@@ -20,7 +26,12 @@ public class MenuScript : MonoBehaviour
 
     public void Jugar()
     {
-        SceneManager.LoadScene("SampleScene");
+
+        if (numCancion == 1)
+        {
+            StaticClass.CrossSceneInfo = "Songs/Midi_do3_4";
+            SceneManager.LoadScene("SampleScene");
+        }
     }
 
     public void Salir()
@@ -28,4 +39,8 @@ public class MenuScript : MonoBehaviour
         Application.Quit();
         Debug.Log("Salir.");
     }
+}
+public static class StaticClass
+{
+    public static string CrossSceneInfo { get; set; }
 }

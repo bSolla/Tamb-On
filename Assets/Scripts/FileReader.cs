@@ -35,7 +35,6 @@ public class FileReader : MonoBehaviour
             foreach (string note in notesPerComp) {
                 notes.Enqueue(Int32.Parse(note));
             }
-            print(songname);
         }
     }
 
