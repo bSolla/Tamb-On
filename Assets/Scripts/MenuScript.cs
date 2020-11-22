@@ -7,14 +7,13 @@ public class MenuScript : MonoBehaviour
 {
     // Start is called before the first frame update
     int numCancion;
-    public void elegirCancion1()
-    {
-        numCancion = 1;
-    }
+ 
+
+ 
 
     void Start()
     {
-        
+    
     }
 
     // Update is called once per frame
@@ -22,18 +21,6 @@ public class MenuScript : MonoBehaviour
     {
         
     }
-
-
-    public void Jugar()
-    {
-
-        if (numCancion == 1)
-        {
-            StaticClass.CrossSceneInfo = "Songs/Midi_do3_4";
-            SceneManager.LoadScene("SampleScene");
-        }
-    }
-
     public void Salir()
     {
         Application.Quit();
