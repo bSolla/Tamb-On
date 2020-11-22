@@ -8,17 +8,23 @@ public class MockupSpawner : MonoBehaviour
 
     #region --- PRIVATE ---
     [SerializeField]
-    BaseButtonBehavior buttonPrefabLeft;
+    BaseButtonBehavior buttonPrefabInnerLeft;
     [SerializeField]
-    BaseButtonBehavior buttonPrefabRight;
+    BaseButtonBehavior buttonPrefabInnerRight;
+    [SerializeField]
+    BaseButtonBehavior buttonPrefabOuterLeft;
+    [SerializeField]
+    BaseButtonBehavior buttonPrefabOuterRight;
 
     RhythmManager rhythmManager;
     float bpm, crotchet, lastBeat = 0;
 
     // change for the real deal when the file reading is done!! TODO
-    Queue<int> spawnTimesLeft = new Queue<int>(new[] { 1, 3, 6, 7, 10, 12, 14, 15, 17, 20,
+    Queue<int> spawnTimesInnerLeft = new Queue<int>();
+    Queue<int> spawnTimesInnerRight = new Queue<int>();
+    Queue<int> spawnTimesOuterLeft = new Queue<int>(new[] { 1, 3, 6, 7, 10, 12, 14, 15, 17, 20,
                                                             24, 25, 28, 29, 30, 33, 34, 36, 40});
-    Queue<int> spawnTimesRight = new Queue<int>(new[] { 2, 5, 8, 11, 16, 18, 21, 23, 26, 32,
+    Queue<int> spawnTimesOuterRight = new Queue<int>(new[] { 2, 5, 8, 11, 16, 18, 21, 23, 26, 32,
                                                             35, 37, 38});
     #endregion
     #region --- PROTECTED ---
@@ -51,32 +57,54 @@ public class MockupSpawner : MonoBehaviour
         //}
 
         // check if we need to spawn left buttons
-        if (spawnTimesLeft.Count != 0 && rhythmManager.songPosition > crotchet * spawnTimesLeft.Peek())
+        if (spawnTimesInnerLeft.Count != 0 && rhythmManager.songPosition > crotchet * spawnTimesInnerLeft.Peek())
         {
-            SpawnLeftButtons();
+            SpawnInnerLeftButtons();
 
-            spawnTimesLeft.Dequeue();
+            spawnTimesInnerLeft.Dequeue();
+        }
+        if (spawnTimesOuterLeft.Count != 0 && rhythmManager.songPosition > crotchet * spawnTimesOuterLeft.Peek())
+        {
+            SpawnOuterLeftButtons();
+
+            spawnTimesOuterLeft.Dequeue();
         }
 
         // check if we need to spawn right buttons
-        if (spawnTimesRight.Count != 0 && rhythmManager.songPosition > crotchet * spawnTimesRight.Peek())
+        if (spawnTimesInnerRight.Count != 0 && rhythmManager.songPosition > crotchet * spawnTimesInnerRight.Peek())
         {
-            SpawnRightButtons();
+            SpawnInnerRightButtons();
 
-            spawnTimesRight.Dequeue();
+            spawnTimesInnerRight.Dequeue();
+        }
+        if (spawnTimesOuterRight.Count != 0 && rhythmManager.songPosition > crotchet * spawnTimesOuterRight.Peek())
+        {
+            SpawnOuterRightButtons();
+
+            spawnTimesOuterRight.Dequeue();
         }
     }
     #endregion
 
     #region --- CUSTOM METHODS ---
-    void SpawnLeftButtons()
+    void SpawnInnerLeftButtons()
     {
-        Instantiate(buttonPrefabLeft, this.transform, true);
+        Instantiate(buttonPrefabInnerLeft, this.transform, true);
     }
 
-    void SpawnRightButtons()
+    void SpawnInnerRightButtons()
     {
-        Instantiate(buttonPrefabRight, this.transform, true);
+        Instantiate(buttonPrefabInnerRight, this.transform, true);
+    }
+
+    void SpawnOuterLeftButtons()
+    {
+        Instantiate(buttonPrefabOuterLeft, this.transform, true);
+    }
+
+    void SpawnOuterRightButtons()
+    {
+        Instantiate(buttonPrefabOuterRight, this.transform, true);
     }
     #endregion
     #endregion
