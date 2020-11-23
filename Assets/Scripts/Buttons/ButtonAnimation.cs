@@ -7,7 +7,6 @@ public class ButtonAnimation : MonoBehaviour
 	[SerializeField] Animator animator;
     public GameObject menuFrom;
     public GameObject menuTo;
-    public AudioSource audiosource;
     public void pressed()
 	{
         animator.SetBool("select", true);

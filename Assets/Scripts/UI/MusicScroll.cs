@@ -4,12 +4,13 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MusicScroll : MonoBehaviour
 {
     public GameObject BotonCancion;
     public Transform Content;
-
+    private Text m_Text;
     private void Start()
     {
         //TextAsset[] songs = Resources.LoadAll<Texture>("Songs/SongName");
@@ -18,11 +19,13 @@ public class MusicScroll : MonoBehaviour
 
         foreach (FileInfo s in songs)
         {
-            GameObject go = Instantiate(BotonCancion) as GameObject;
+            GameObject go = Instantiate(BotonCancion);
+            
             go.transform.SetParent(Content);
             string sName = s.Name;
             sName = sName.Replace(".txt","");
-            go.GetComponentInChildren<Text>().text = sName;
+            m_Text = go.GetComponentInChildren<Text>();
+            m_Text.text = sName;
             go.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(sName));
         }
     }
