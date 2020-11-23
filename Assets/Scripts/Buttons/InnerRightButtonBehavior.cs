@@ -28,22 +28,78 @@ public class InnerRightButtonBehavior : BaseButtonBehavior
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Goal")
+        if (other.tag == "Perfect")
         {
-            GameManager.instance.inputManager.innerTaikoReadyR = true;
-            GameManager.instance.inputManager.buttonToDestroyIR = gameObject;
+            GameManager.instance.inputManager.innerTaikoReadyRPerfect = true;
+            GameManager.instance.inputManager.buttonToDestroyIRPerfect = gameObject;
+        }
+        else if (other.tag == "HitLeft")
+        {
+            GameManager.instance.inputManager.innerTaikoReadyRHitL = true;
+            GameManager.instance.inputManager.buttonToDestroyIRHitL = gameObject;
+        }
+        else if (other.tag == "HitRight")
+        {
+            GameManager.instance.inputManager.innerTaikoReadyRHitR = true;
+            GameManager.instance.inputManager.buttonToDestroyIRHitR = gameObject;
+        }
+        else if (other.tag == "MissLeft")
+        {
+            GameManager.instance.inputManager.innerTaikoReadyRMissL = true;
+            GameManager.instance.inputManager.buttonToDestroyIRMissL = gameObject;
+        }
+        else if (other.tag == "MissRight")
+        {
+            GameManager.instance.inputManager.innerTaikoReadyRMissR = true;
+            GameManager.instance.inputManager.buttonToDestroyIRMissR = gameObject;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Goal")
+        if (other.tag == "Perfect")
         {
-            GameManager.instance.inputManager.innerTaikoReadyR = false;
-            GameManager.instance.inputManager.buttonToDestroyIR = null;
+            GameManager.instance.inputManager.innerTaikoReadyRPerfect = false;
+            GameManager.instance.inputManager.buttonToDestroyIRPerfect = null;
 
 
-            GameManager.instance.scoreManager.ScorePenalty();
+            //GameManager.instance.scoreManager.ScorePenalty();
+
+            Invoke("DestroyButton", 1f);
+        }
+        else if (other.tag == "HitLeft")
+        {
+            GameManager.instance.inputManager.innerTaikoReadyRHitL = false;
+            GameManager.instance.inputManager.buttonToDestroyIRHitL = null;
+
+
+
+            Invoke("DestroyButton", 1f);
+        }
+        else if (other.tag == "HitRight")
+        {
+            GameManager.instance.inputManager.innerTaikoReadyRHitR = false;
+            GameManager.instance.inputManager.buttonToDestroyIRHitR = null;
+
+
+
+            Invoke("DestroyButton", 1f);
+        }
+        else if (other.tag == "MissLeft")
+        {
+            GameManager.instance.inputManager.innerTaikoReadyRMissL = false;
+            GameManager.instance.inputManager.buttonToDestroyIRMissL = null;
+
+
+            //GameManager.instance.scoreManager.ScorePenalty();
+
+            Invoke("DestroyButton", 1f);
+        }
+        else if (other.tag == "MissRight")
+        {
+            GameManager.instance.inputManager.innerTaikoReadyRMissR = false;
+            GameManager.instance.inputManager.buttonToDestroyIRMissR = null;
+
 
             Invoke("DestroyButton", 1f);
         }

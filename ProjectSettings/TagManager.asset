@@ -8,6 +8,11 @@ TagManager:
   - RhythmManager
   - Spawner
   - FileReader
+  - Perfect
+  - HitRight
+  - HitLeft
+  - MissRight
+  - MissLeft
   layers:
   - Default
   - TransparentFX
