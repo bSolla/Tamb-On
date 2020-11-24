@@ -6,14 +6,17 @@ using UnityEngine.SceneManagement;
 public class MenuScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    int numCancion;
+    public AudioSource audio;
  
-
+    public void SetVolume(float volume)
+    {
+        audio.volume = volume;
+    }
  
 
     void Start()
     {
-    
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

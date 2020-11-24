@@ -16,10 +16,12 @@ public class MusicScroll : MonoBehaviour
         //TextAsset[] songs = Resources.LoadAll<Texture>("Songs/SongName");
         DirectoryInfo dir = new DirectoryInfo("Assets/Resources/Songs");
         FileInfo[] songs = dir.GetFiles("*.txt");
+        SliderMenu sliderM = GetComponent<SliderMenu>();
 
         foreach (FileInfo s in songs)
         {
             GameObject go = Instantiate(BotonCancion);
+            
             
             go.transform.SetParent(Content);
             string sName = s.Name;
@@ -27,6 +29,7 @@ public class MusicScroll : MonoBehaviour
             m_Text = go.GetComponentInChildren<Text>();
             m_Text.text = sName;
             go.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(sName));
+            sliderM.Slides.Add(go);
         }
     }
 
