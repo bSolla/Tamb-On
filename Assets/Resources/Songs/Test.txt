@@ -1,5 +1,0 @@
-Name: Test
-Autor: Kim
-Bpm: 30
-Compas: 4/4
-Dificultad: Facil
