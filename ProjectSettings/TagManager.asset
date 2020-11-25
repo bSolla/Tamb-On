@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Goal
   - RhythmManager
+  - Spawner
+  - FileReader
   layers:
   - Default
   - TransparentFX
