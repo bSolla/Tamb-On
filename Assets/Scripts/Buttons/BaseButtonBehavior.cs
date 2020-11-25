@@ -47,7 +47,7 @@ public class BaseButtonBehavior : MonoBehaviour
         rhythmManager = GameManager.instance.rhythmManager;
         buttonTransform = gameObject.transform;
         originPoint = GameObject.FindGameObjectWithTag("Spawner").transform.position;
-        destinationPoint = GameObject.FindGameObjectWithTag("Goal").transform.position;
+        destinationPoint = GameObject.FindGameObjectWithTag("MissLeft").transform.position;
 
         float timeToReachGoal = rhythmManager.crotchet * 2; // TODO: establish how many beats ahead we want the buttons to spawn
 
@@ -58,9 +58,9 @@ public class BaseButtonBehavior : MonoBehaviour
     {
         float step = speed * Time.deltaTime;
         transform.position = new Vector3(
-            transform.position.x + speedDirection.x * step,
-            transform.position.y + speedDirection.y * step,
-            transform.position.z);
+        transform.position.x + speedDirection.x * step,
+        transform.position.y + speedDirection.y * step,
+        transform.position.z);
     }
 
     protected void DestroyButton()
