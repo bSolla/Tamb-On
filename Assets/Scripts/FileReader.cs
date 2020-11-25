@@ -22,7 +22,7 @@ public class FileReader : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        string song = Application.dataPath + "/Resources/Songs/song1.txt";
+       /* string song = Application.dataPath + "/Resources/Songs/song1.txt";
         if (File.Exists(song)) {
             string[] text = File.ReadAllLines(song);
             songname = text[0];
@@ -35,7 +35,7 @@ public class FileReader : MonoBehaviour
             foreach (string note in notesPerComp) {
                 notes.Enqueue(Int32.Parse(note));
             }
-        }
+        }*/
     }
 
     // Update is called once per frame

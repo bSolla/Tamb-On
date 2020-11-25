@@ -5257,7 +5257,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5460,7 +5460,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1166363021
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5811,7 +5811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1302200593
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5879,13 +5879,13 @@ MonoBehaviour:
   ButtonTransition: 0.1
   SliderMagnet: 1
   MagnetTransition: 0
-  SlidesPropertyBlock: 1
+  SlidesPropertyBlock: 0
   SlidesInView: 1
   DefaultOffset: 1
   ActiveSlideOffset: 2
   SlideSize: {x: 500, y: 200}
   SlideMargin: {x: 0, y: 0, z: 0, w: 0}
-  AnimationBlock: 0
+  AnimationBlock: 1
   PreviousPositionAnimation: 1
   PreviousOffset: 0
   PreviousOffsetTransition: 0.1
@@ -8207,7 +8207,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}

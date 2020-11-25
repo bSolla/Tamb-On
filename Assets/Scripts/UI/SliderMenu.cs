@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System;
 
 //===========================Begin Scroll Type And Scrollbar Direction================================
 public enum scrolltype{
@@ -219,9 +220,17 @@ public class SliderMenu : MonoBehaviour {
 	private 	float 							k							= 0;
 	private 	bool 							ButtonClicked				= false;
 	//=======================================End Other Properties=========================================
-
-
-	void Update () {
+	private float currentSlide;
+	private float preSlide;
+	private float nextSlide;
+    void Start()
+    {
+		currentSlide = -1;
+		preSlide = -1;
+		nextSlide = -1;
+	}
+    void Update () {
+		
 		//==================================Begin Calculate Scroll Step Value=================================
 		n = Slides.Count-1;
 		ScrollStep = 1/n;
@@ -270,8 +279,10 @@ public class SliderMenu : MonoBehaviour {
 					if (HorizontalScrollbar.GetComponent<Scrollbar> ().value > (ScrollStep / 2) + (i - 1) * ScrollStep && HorizontalScrollbar.GetComponent<Scrollbar> ().value <= Mathf.Clamp ((ScrollStep / 2) + i * ScrollStep, 0, 1)) {
 						//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Begin Active Slide
 						if (j == i) {
+							
 							//------------------------------------------------------------------------Begin Position Animation
 							if (ActivePositionAnimation) {
+								
 								Slides [j].GetComponent<RectTransform> ().localPosition = new Vector3 (
 									//X
 									((SlidesInView - 1) / 2) * (SlideSize.x + SlideMargin.w + SlideMargin.y) + (j + 1) * SlideMargin.w + (j) * (SlideMargin.y) + (2 * j + 1) * SlideSize.x / 2, 
@@ -299,6 +310,7 @@ public class SliderMenu : MonoBehaviour {
 							//---------------------------------------------------------------------------Begin Scale Animation
 							if (ActiveScaleAnimation) {
 								Slides [j].transform.localScale = Vector2.Lerp (Slides [j].transform.localScale, ActiveScale, ActiveScaleTransition);
+								writeText(Slides[j], j, 0);
 							} else {
 								Slides [j].transform.localScale = ActiveScale;
 							}
@@ -382,6 +394,7 @@ public class SliderMenu : MonoBehaviour {
 							//------------------------------------------------------------------Begin Previous Scale Animation
 							if (PreviousScaleAnimation) {
 								Slides [j].transform.localScale = Vector2.Lerp (Slides [j].transform.localScale, PreviousScale, PreviousScaleTransition);
+								writeText(Slides[j], j, 1);
 							} else {
 								Slides [j].transform.localScale = PreviousScale;
 							}
@@ -444,6 +457,7 @@ public class SliderMenu : MonoBehaviour {
 							//----------------------------------------------------------------------Begin Next Scale Animation
 							if (NextScaleAnimation) {
 								Slides [j].transform.localScale = Vector2.Lerp (Slides [j].transform.localScale, NextScale, NextScaleTransition);
+								writeText(Slides[j], j, 2);
 							} else {
 								Slides [j].transform.localScale = NextScale;
 							}
@@ -608,6 +622,7 @@ public class SliderMenu : MonoBehaviour {
 					if (VerticalScrollbar.GetComponent<Scrollbar> ().value > (ScrollStep / 2) + (i - 1) * ScrollStep && VerticalScrollbar.GetComponent<Scrollbar> ().value <= Mathf.Clamp ((ScrollStep / 2) + i * ScrollStep, 0, 1)) {
 						//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Begin Active Slide
 						if (j == i) {
+							
 							//------------------------------------------------------------------------Begin Position Animation
 							if (ActivePositionAnimation) {
 								Slides [j].GetComponent<RectTransform> ().localPosition = new Vector3 (Mathf.Lerp (Slides [j].GetComponent<RectTransform> ().localPosition.x, SliderMenuCanvas.GetComponent<RectTransform> ().sizeDelta.x / 2 + ActiveOffset, ActiveOffsetTransition), ((SlidesInView - 1) / 2) * (SlideSize.y + SlideMargin.z + SlideMargin.x) + (j + 1) * SlideMargin.z + (j) * (SlideMargin.x) + (2 * j + 1) * SlideSize.y / 2, 10);
@@ -831,9 +846,74 @@ public class SliderMenu : MonoBehaviour {
 
 	}
 
+    private void writeText(GameObject SongButton, float j, int v)
+    {
+		
+		Text[] t = SongButton.GetComponentsInChildren<Text>();
+		GameObject c = SongButton.transform.GetChild(0).gameObject;
+		GameObject back = SongButton.transform.GetChild(1).gameObject;
+		GameObject frame = SongButton.transform.GetChild(2).gameObject;
+		AudioSource audio = SongButton.GetComponent<AudioSource>();
+		float slide;
+		if (v == 0)
+        {
+			slide = currentSlide;
+        }
+		else if (v == 1)
+		{
+			slide = preSlide;
+		}
+		else {
+			slide = nextSlide;
+		}
+		if (slide != j)
+        {
+			if (v == 0)
+			{
 
-	//....................................Begin Next Button's Function....................................
-	public void NextButton(){
+				Debug.Log("ostia");
+				
+				currentSlide = j;
+				t[0].enabled = true;
+				t[1].enabled = true;
+				c.SetActive(true);
+				frame.GetComponent<Image>().sprite = Resources.Load<Sprite>("marcSel");
+				back.GetComponent<RectTransform>().sizeDelta = new Vector2(466, 188);
+				back.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(0, 45, 0);
+				audio.PlayOneShot((AudioClip)Resources.Load("Songs/" + t[0].text));
+			}
+			else if (v == 1)
+			{
+				audio.Stop();
+				preSlide = j;
+				t[0].enabled = false;
+				t[1].enabled = false;
+				c.SetActive(false);
+				frame.GetComponent<Image>().sprite = Resources.Load<Sprite>("marc");
+				
+				back.GetComponent<RectTransform>().sizeDelta = new Vector2(465, 275);
+				back.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(0, 0, 0);
+
+			}
+			else
+			{
+				audio.Stop();
+				nextSlide = j;
+				t[0].enabled = false;
+				t[1].enabled = false;
+				c.SetActive(false);
+				frame.GetComponent<Image>().sprite = Resources.Load<Sprite>("marc");
+				back.GetComponent<RectTransform>().sizeDelta = new Vector2(465, 275);
+				back.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(0, 0, 0);
+			}
+
+		}
+		
+	}
+
+
+    //....................................Begin Next Button's Function....................................
+    public void NextButton(){
 		if(ScrollType==scrolltype.Horizontal){
 			k = HorizontalScrollbar.GetComponent<Scrollbar> ().value;
 		}

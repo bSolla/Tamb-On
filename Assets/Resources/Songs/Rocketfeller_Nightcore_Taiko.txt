@@ -1,5 +1,5 @@
-Name: Rocketfeller_Nightcore_Taiko
-Autor: Getter Jaani ft. TheNightcoreWitcher
+Name: Rocketfeller Street
+Author: Getter Jaani 
 Bpm: 162
-Compas: 4/4
-Dificultad: Dificil
+Difficulty: 3
+Image: b2

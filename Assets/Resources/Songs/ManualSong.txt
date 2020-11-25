@@ -1,7 +1,5 @@
-Dividido por lineas (podemos cambiar a tabulaciones o algo)
-1ª Nombre
-2ª Autor
-3ª Bpm
-4ª Compas
-5ª Dificultad (String or Int (Facil, Medio, Dificil))
-6ª Notas (Lista de listas divida en fusas (compas * 2), notas en la posicion de la fusa correspondiente)
+Name: xdeses
+Author: yo mismo
+Bpm: 162
+Difficulty: 1
+Image: b1
