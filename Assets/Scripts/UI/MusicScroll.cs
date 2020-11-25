@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class MusicScroll : MonoBehaviour
 {
@@ -29,8 +28,6 @@ public class MusicScroll : MonoBehaviour
 
     public void OnButtonClick(string buttonName)
     {
-        //Debug.Log(buttonName);
-        StaticClass.CrossSceneInfo = "Songs/" + buttonName;
-        SceneManager.LoadScene("SampleScene");
+        Debug.Log(buttonName);
     }
 }

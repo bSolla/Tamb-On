@@ -1,4 +1,4 @@
-Name: Rocketfeller_Nightcore_Taiko
+Name: Rocketfeller Street (Nightcore)
 Autor: Getter Jaani ft. TheNightcoreWitcher
 Bpm: 162
 Compas: 4/4
