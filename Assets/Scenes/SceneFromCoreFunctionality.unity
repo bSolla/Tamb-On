@@ -1765,6 +1765,7 @@ MonoBehaviour:
   bpm: 75
   crotchet: 0
   songPosition: 0
+  midiFile: {fileID: 0}
 --- !u!4 &1892317769
 Transform:
   m_ObjectHideFlags: 0

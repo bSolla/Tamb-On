@@ -6,9 +6,17 @@ using UnityEngine.SceneManagement;
 public class MenuScript : MonoBehaviour
 {
     // Start is called before the first frame update
+    public AudioSource audio;
+ 
+    public void SetVolume(float volume)
+    {
+        audio.volume = volume;
+    }
+ 
+
     void Start()
     {
-        
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -16,16 +24,13 @@ public class MenuScript : MonoBehaviour
     {
         
     }
-
-
-    public void Jugar()
-    {
-        SceneManager.LoadScene("SampleScene");
-    }
-
     public void Salir()
     {
         Application.Quit();
         Debug.Log("Salir.");
     }
+}
+public static class StaticClass
+{
+    public static string CrossSceneInfo { get; set; }
 }

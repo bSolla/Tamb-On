@@ -22,8 +22,20 @@ public class InputManager : MonoBehaviour
     #region --- PUBLIC ---
     public bool innerTaikoReadyL = false, innerTaikoReadyR = false;
     public bool outerTaikoReadyL = false, outerTaikoReadyR = false;
+
     public GameObject buttonToDestroyIL, buttonToDestroyIR;
     public GameObject buttonToDestroyOL, buttonToDestroyOR;
+
+    // Booleans for each line for the score and each object to destroy
+    public bool innerTaikoReadyLPerfect = false, innerTaikoReadyLHitL = false, innerTaikoReadyLHitR = false, innerTaikoReadyLMissL = false, innerTaikoReadyLMissR = false;
+    public bool innerTaikoReadyRPerfect = false, innerTaikoReadyRHitL = false, innerTaikoReadyRHitR = false, innerTaikoReadyRMissL = false, innerTaikoReadyRMissR = false;
+    public bool outerTaikoReadyLPerfect = false, outerTaikoReadyLHitL = false, outerTaikoReadyLHitR = false, outerTaikoReadyLMissL = false, outerTaikoReadyLMissR = false;
+    public bool outerTaikoReadyRPerfect = false, outerTaikoReadyRHitL = false, outerTaikoReadyRHitR = false, outerTaikoReadyRMissL = false, outerTaikoReadyRMissR = false;
+
+    public GameObject buttonToDestroyILPerfect, buttonToDestroyILHitL, buttonToDestroyILHitR, buttonToDestroyILMissL, buttonToDestroyILMissR;
+    public GameObject buttonToDestroyIRPerfect, buttonToDestroyIRHitL, buttonToDestroyIRHitR, buttonToDestroyIRMissL, buttonToDestroyIRMissR;
+    public GameObject buttonToDestroyOLPerfect, buttonToDestroyOLHitL, buttonToDestroyOLHitR, buttonToDestroyOLMissL, buttonToDestroyOLMissR;
+    public GameObject buttonToDestroyORPerfect, buttonToDestroyORHitL, buttonToDestroyORHitR, buttonToDestroyORMissL, buttonToDestroyORMissR;
 
     #endregion
 
@@ -75,64 +87,136 @@ public class InputManager : MonoBehaviour
             if (button != null && button.clickable) // see if its a button and if its clickable
             {
                 Destroy(button.gameObject);
-                scoreManager.IncreaseScore();
+                scoreManager.IncreaseScore(false);
             }
         }
     }
 
     public void CheckInnerLeftTaiko()
     {
-        if (!innerTaikoReadyL)
+        if (innerTaikoReadyLPerfect)
         {
-            scoreManager.ScorePenalty();
+            Destroy(buttonToDestroyILPerfect);
+            scoreManager.IncreaseScore(true);
+            innerTaikoReadyLPerfect = false;
         }
-        else
+        else if (innerTaikoReadyLHitL)
         {
-            Destroy(buttonToDestroyIL);
-            scoreManager.IncreaseScore();
-            innerTaikoReadyL = false;
+            Destroy(buttonToDestroyILHitL);
+            scoreManager.IncreaseScore(false);
+            innerTaikoReadyLHitL = false;
+        }
+        else if (innerTaikoReadyLHitR)
+        {
+            Destroy(buttonToDestroyILHitR);
+            scoreManager.IncreaseScore(false);
+            innerTaikoReadyLHitR = false;
+        }
+        else if (innerTaikoReadyLMissL)
+        {
+            Destroy(buttonToDestroyILMissL);
+            innerTaikoReadyLMissL = false;
+        }
+        else if (innerTaikoReadyLMissR)
+        {
+            Destroy(buttonToDestroyILMissR);
+            innerTaikoReadyLMissR = false;
         }
     }
 
     public void CheckInnerRightTaiko()
     {
-        if (!innerTaikoReadyR)
+        if (innerTaikoReadyRPerfect)
         {
-            scoreManager.ScorePenalty(); 
+            Destroy(buttonToDestroyIRPerfect);
+            scoreManager.IncreaseScore(true);
+            innerTaikoReadyRPerfect = false;
         }
-        else
+        else if (innerTaikoReadyRHitL)
         {
-            Destroy(buttonToDestroyIR);
-            scoreManager.IncreaseScore();
-            innerTaikoReadyR = false;
+            Destroy(buttonToDestroyIRHitL);
+            scoreManager.IncreaseScore(false);
+            innerTaikoReadyRHitL = false;
+        }
+        else if (innerTaikoReadyRHitR)
+        {
+            Destroy(buttonToDestroyIRHitR);
+            scoreManager.IncreaseScore(false);
+            innerTaikoReadyRHitR = false;
+        }
+        else if (innerTaikoReadyRMissL)
+        {
+            Destroy(buttonToDestroyIRMissL);
+            innerTaikoReadyRMissL = false;
+        }
+        else if (innerTaikoReadyRMissR)
+        {
+            Destroy(buttonToDestroyIRMissR);
+            innerTaikoReadyRMissR = false;
         }
     }
 
     public void CheckOuterLeftTaiko()
     {
-        if (!outerTaikoReadyL)
+        if (outerTaikoReadyLPerfect)
         {
-            scoreManager.ScorePenalty();
+            Destroy(buttonToDestroyOLPerfect);
+            scoreManager.IncreaseScore(true);
+            outerTaikoReadyLPerfect = false;
         }
-        else
+        else if (outerTaikoReadyLHitL)
         {
-            Destroy(buttonToDestroyOL);
-            scoreManager.IncreaseScore();
-            outerTaikoReadyL = false;
+            Destroy(buttonToDestroyOLHitL);
+            scoreManager.IncreaseScore(false);
+            outerTaikoReadyLHitL = false;
+        }
+        else if (outerTaikoReadyLHitR)
+        {
+            Destroy(buttonToDestroyOLHitR);
+            scoreManager.IncreaseScore(false);
+            outerTaikoReadyLHitR = false;
+        }
+        else if (outerTaikoReadyLMissL)
+        {
+            Destroy(buttonToDestroyOLMissL);
+            outerTaikoReadyLMissL = false;
+        }
+        else if (outerTaikoReadyLMissR)
+        {
+            Destroy(buttonToDestroyOLMissR);
+            outerTaikoReadyLMissR = false;
         }
     }
 
     public void CheckOuterRightTaiko()
     {
-        if (!outerTaikoReadyR)
+        if (outerTaikoReadyRPerfect)
         {
-            scoreManager.ScorePenalty();
+            Destroy(buttonToDestroyORPerfect);
+            scoreManager.IncreaseScore(true);
+            outerTaikoReadyRPerfect = false;
         }
-        else
+        else if (outerTaikoReadyRHitL)
         {
-            Destroy(buttonToDestroyOR);
-            scoreManager.IncreaseScore();
-            outerTaikoReadyR = false;
+            Destroy(buttonToDestroyORHitL);
+            scoreManager.IncreaseScore(false);
+            outerTaikoReadyRHitL = false;
+        }
+        else if (outerTaikoReadyRHitR)
+        {
+            Destroy(buttonToDestroyORHitR);
+            scoreManager.IncreaseScore(false);
+            outerTaikoReadyRHitR = false;
+        }
+        else if (outerTaikoReadyRMissL)
+        {
+            Destroy(buttonToDestroyORMissL);
+            outerTaikoReadyRMissL = false;
+        }
+        else if (outerTaikoReadyRMissR)
+        {
+            Destroy(buttonToDestroyORMissR);
+            outerTaikoReadyRMissR = false;
         }
     }
     #endregion

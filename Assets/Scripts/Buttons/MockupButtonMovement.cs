@@ -33,6 +33,7 @@ public class MockupButtonMovement : BaseButtonBehavior
     {
         if (other.tag == "Goal")
         {
+            rhythmManager.Play();
             clickable = true;
         }
     }

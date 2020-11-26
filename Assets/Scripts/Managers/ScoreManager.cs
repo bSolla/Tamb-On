@@ -39,12 +39,15 @@ public class ScoreManager : MonoBehaviour
     #endregion
 
     #region --- CUSTOM METHODS ---
-    public void IncreaseScore()
+    public void IncreaseScore(bool perfect)
     {
-        score++;
+        score += 100;
+        if (perfect) score += 100;
+        //score++;
         scoreText.text = score.ToString();
     }
 
+/*    
     public void ScorePenalty()
     {
         if (score >= PENALTY)
@@ -58,6 +61,7 @@ public class ScoreManager : MonoBehaviour
 
         scoreText.text = score.ToString();
     }
+*/
     #endregion
     #endregion
 }

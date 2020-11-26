@@ -1,0 +1,5 @@
+Name: xdeses
+Author: yo mismo
+Bpm: 162
+Difficulty: 1
+Image: b1
