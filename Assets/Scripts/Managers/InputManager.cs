@@ -13,6 +13,7 @@ public class InputManager : MonoBehaviour
     const KeyCode OUTER_LEFT_TAIKO = KeyCode.Q;
     const KeyCode INNER_RIGHT_TAIKO = KeyCode.J;
     const KeyCode OUTER_RIGHT_TAIKO = KeyCode.P;
+
     #endregion
     #region --- PROTECTED ---
 
